@@ -1,0 +1,25 @@
+﻿<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="post-card.html">
+
+<polymer-element name="bio-card">
+
+  <template>
+    <post-card>
+	     
+      <p>Victor is currently a computer science major at Rutgers University. In August 2014, the high school he graduated from hired him as a part time instructor for their AP Computer Science Class, of which he's open-sourced his course materials. </p>
+						
+      <p>When he's not occupied with class work, he's busy at work on a number of side projects, whether it be contract work, a personal project, or algorithms research with a professor. Most recent of these contract jobs is his work on a HIPAA compliant video streaming Google Glass application for those in the medical professions</p>
+
+      <p>He started developing Android applications since Android's inception, even though he was not even in high school yet. Most recently, Victor has been working on applications for embedded systems and wearables (particularly Google Glass and Android Wear)</p>
+
+      <p>As for intellectual property, in addition to the software he has on the market and the code he released as open source, Victor is the author of a Elementary Android App Development and has a patent pending for a novel means of feature detection in images</p>
+
+     </post-card>
+  </template>
+
+  <script>
+  	Polymer({});
+  </script>
+
+</polymer-element>

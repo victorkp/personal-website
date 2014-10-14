@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Victor's Bio</title>
+
+		<head profile="http://www.w3.org/2005/10/profile">
+		<link rel="icon" type="image/png" href="/images/favicon.png">
+
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+		<script src="bower_components/platform/platform.js"></script>
+		<link rel="import" src="bower_components/font-roboto/roboto.html">
+
+		<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+		<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+		<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+		<link rel="import" href="post-card.html" >
+
+		<link rel="import" href="bower_components/core-ajax/core-ajax.html">
+
+		<link rel="stylesheet" type='text/css' href="styles/main.css">
+
+		<script src="scripts/main.js"></script>
+	</head>
+
+	<body unresolved touch-action="auto">
+		<core-header-panel>
+			<core-toolbar>
+				<img src="images/profile-circle.png" width="100px" height="100px" />
+				<h3>Victor Kaiser-Pendergrast</h1>
+				<paper-tabs valueattr="name" selected="projects">
+					<paper-tab id="tab-bio" name="bio">About Me</paper-tab>
+					<paper-tab id="tab-projects" name="projects">Projects</paper-tab>
+					<paper-tab id="tab-speaking" name="speaking">Public Speaking</paper-tab>
+				</paper-tabs>
+			</core-toolbar>
+
+			<!-- Main Page Content -->
+			<div id="content-container" class="container" layout vertical center>
+				<h1>Personal Projects</h1>
+				<post-card>
+					<img src="images/drivesafe.png" width="200px" height="200px" />
+					<h2>DriveSafe</h2>
+					<p>The brainchild of Jake Steinerman, and a project that I joined in order to occupy my time. DriveSafe was one of the first apps to make use of the Google Glass GDK. When we saw articles about DriveSafe in PCWorld, Wired, and even the print-version of USA Today, we knew we were onto something important.
+					</p>
+					<p>Thanks to DriveSafe, Jake and I were invited to give courses at the Wearables Devcon and the Mobile+Web Devcon in 2014. DriveSafe is an ongoing project, with some large updates on the way.
+					</p>
+					<p> For more information, see the <a href="http://www.drivesafeforglass.com">DriveSafe website</a></p>
+				</post-card>
+
+				<post-card>
+					<img src="images/badgin.png" width="200px" height="200px" />
+					<h2>BadgIn Attendance Tracker</h2>
+					<p>A time clock for the modern era! BadgIn was a project intended for my own use that tried to solve the problem of taking attendance at recurring club meetings. Members were issued NFC (tap-and-go) cards; in order to sign in and out, all they had to do was tap their card on the back of a Nexus 7 set up at the door. 
+					</p>
+					<p>BadgIn then could display detailed attendance statistics, export the data as a spreadsheet, and even automatically backup to Dropbox.
+					</p>
+					<p>Available on <a href="http://play.google.com/store/apps/details?id=com.victor.punch.card">Google Play</a></p>
+				</post-card>
+
+			</div>
+			
+		</core-header-panel>
+	</body>
+
+	<script>
+		var tabs = {
+			bio: document.querySelector('#tab-bio'),
+			projects: document.querySelector('#tab-projects'),
+			publicSpeaking: document.querySelector('#tab-speaking')
+		};
+
+		var contentContainer = document.querySelector('#content-container');
+
+		tabs.bio.addEventListener('click', function(e){
+			window.location.href="../index.html";
+		});
+	</script>
+
+</html>
