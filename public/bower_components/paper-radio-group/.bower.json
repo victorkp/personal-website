@@ -1,20 +1,46 @@
 {
   "name": "paper-radio-group",
+  "version": "1.0.9",
+  "description": "A group of material design radio buttons",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "radio",
+    "control"
+  ],
   "private": true,
-  "dependencies": {
-    "core-selector": "Polymer/core-selector#^0.3.0",
-    "font-roboto": "Polymer/font-roboto#^0.3.0",
-    "paper-radio-button": "Polymer/paper-radio-button#^0.3.0"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-radio-group.git"
   },
-  "homepage": "https://github.com/Polymer/paper-radio-group",
-  "version": "0.3.6",
-  "_release": "0.3.6",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/PolymerElements/paper-radio-group",
+  "ignore": [],
+  "dependencies": {
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^1.0.0",
+    "iron-selector": "PolymerElements/iron-selector#^1.0.0",
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0",
+    "paper-styles": "PolymerElements/paper-styles#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "main": "paper-radio-group.html",
+  "_release": "1.0.9",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.6",
-    "commit": "9d78fa005d9537ff95c3dac595067a3602025306"
+    "tag": "v1.0.9",
+    "commit": "27a8447ed1709dd1a9bef514acd7dee218604077"
   },
-  "_source": "git://github.com/Polymer/paper-radio-group.git",
-  "_target": "^0.3.0",
-  "_originalSource": "Polymer/paper-radio-group"
+  "_source": "git://github.com/PolymerElements/paper-radio-group.git",
+  "_target": "^1.0.0",
+  "_originalSource": "PolymerElements/paper-radio-group"
 }

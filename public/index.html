@@ -1,282 +1,255 @@
 <!doctype html>
-<html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html lang="en">
+
 <head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Victor Kaiser-Pendergrast">
   <title>Victor Kaiser-Pendergrast</title>
 
-  <!-- Android -->
+  <!-- Place favicon.ico in the `app/` directory -->
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <!-- iOS -->
+  <meta name="application-name" content="PSK">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Victor Kaiser-Pendergrast">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
 
-  <script src="bower_components/platform/platform.js"></script>
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
 
-  <link rel="import" href="bower_components/font-roboto/roboto.html">
-  <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
-  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-  <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
-  <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-  <link rel="import" href="bower_components/core-menu/core-menu.html">
-  <link rel="import" href="bower_components/paper-item/paper-item.html">
-  <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
-  <link rel="import" href="bower_components/core-tooltip/core-tooltip.html">
-  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="bower_components/paper-fab/paper-fab.html">
-  <link rel="import" href="bower_components/core-icons/core-icons.html">
-  <link rel="import" href="bower_components/core-icons/communication-icons.html">
-  <link rel="import" href="bower_components/polymer-ui-card/polymer-ui-card.html">
-  <link rel="import" href="bio-card.html" >
-  <link rel="import" href="projects-cards.html" >
-  <link rel="import" href="speaking-cards.html" >
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
 
-  <style shim-shadowdom>
+  <!-- Because this project uses vulcanize this should be your only html import
+       in this file. All other imports should go in elements.html -->
+  <link rel="import" href="elements/elements.html">
 
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      color: #333;
-    }
-
-    h1, h2 {
-      padding: 15px;
-    }
-
-    hr {
-      margin-left="24px";
-      margin-right="24px";
-    }
-
-    paper-fab {
-	position: relative;
-	top: 30px;
-	color: white;
-    }
-
-    core-scroll-header-panel {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 40%;
-    }
-
-    /* background for toolbar when it is at its full size */
-    core-scroll-header-panel::shadow #headerBg {
-      background-image: url(images/portrait-banner-wide.jpg);
-    }
-
-    /* background for toolbar when it is condensed */
-    core-scroll-header-panel::shadow #condensedHeaderBg {
-      background-color: #B9998D;
-    }
-
-    core-scaffold {
-      background-color: #B9998D;
-    }
-
-    core-toolbar {
-      color: #000000;
-      fill: #000000;
-      background-color: transparent;
-    }
-
-    paper-item {
-	max-width: 300px;
-    }
-
-    [drawer] {
-      background-color: #B9998D;
-    }
-    
-    [main] {
-      height: 100%;
-      background-color: #eee;
-    }
-    
-    button {
-      display: none;
-      width: 160px;
-      height: 40px;
-      font-size: 16px;
-      margin: 8px;
-    }
-    
-    core-drawer-panel[narrow] #navicon {
-      display: inline-block
-    }
-
-    #navicon {
-       display: none;
-    }
-
-    .title {
-      -webkit-transform-origin: 0;
-      transform-origin: 0;
-      font-size: 40px;
-    }
-
-    .content {
-      width: 90%;
-      padding: 4px;
-      padding-top: 30px;
-      background-color: #eee;
-    }
-
-    .drawer-content {
-      padding: 8px;
-    }
-
-    #page-title {
-	text-shadow: 2px 2px #ccc;
-    }
-    
-    core-tooltip.fancy::shadow .core-tooltip {
-      opacity: 0;
-      -webkit-transition: all 300ms cubic-bezier(0,1.92,.99,1.07);
-      transition: all 300ms cubic-bezier(0,1.92,.99,1.07);
-      -webkit-transform: translate3d(0, -10px, 0);
-      transform: translate3d(0, -10px, 0);
-    }
-
-    core-tooltip.fancy:hover::shadow .core-tooltip,
-    core-tooltip.fancy:focus::shadow .core-tooltip {
-      opacity: 1;
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-
-  </style>
-
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+  <style is="custom-style" include="shared-styles"></style>
 </head>
+
 <body unresolved>
+  <span id="browser-sync-binding"></span>
+  <template is="dom-bind" id="app">
 
-<core-drawer-panel>
+    <paper-drawer-panel id="paperDrawerPanel">
+      <!-- Drawer Scroll Header Panel -->
+      <paper-scroll-header-panel drawer fixed>
 
-  <core-header-panel navigation flex drawer>
-	  <h2>Victor<br>Kaiser-Pendergrast</h2>
-	  <hr>
-	  <div class="drawer-content">
-	  <core-menu>
-		<paper-item icon="account-circle" label="About Me"></paper-item>
-		<paper-item icon="drive-file" label="Projects"></paper-item>
-		<paper-item icon="drive-image" label="Public Speaking"></paper-item>
-	  </core-menu>
-  	  </div>
-  </core-header-panel>
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="menu-name">Menu</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="about" href="{{baseUrl}}">
+            <iron-icon icon="account-circle"></iron-icon>
+            <span>About Me</span>
+          </a>
+
+          <a data-route="projects" href="{{baseUrl}}projects">
+            <iron-icon icon="android"></iron-icon>
+            <span>Projects</span>
+          </a>
+
+          <a data-route="speaking" href="{{baseUrl}}speaking">
+            <iron-icon icon="speaker-notes"></iron-icon>
+            <span>Public Speaking</span>
+          </a>
+        </paper-menu>
+      </paper-scroll-header-panel>
+
+      <!-- Main Area -->
+      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar" class="tall">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+
+          <span class="space"></span>
+
+          <!-- Application name -->
+          <div class="bottom bottom-container">
+            <div class="app-name">Victor Kaiser-Pendergrast</div>
+          </div>
+        </paper-toolbar>
+
+        <!-- Main Content -->
+        <div class="content">
+          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+            <section data-route="about">
+              <paper-material elevation="1">
+                <h2> Contact Information </h2>
+                <p>
+                  <iron-icon icon="mail"></iron-icon>
+                  <a style="text-decoration: none" href="mailto:v.kaiser.pendergrast@gmail.com">V.Kaiser.Pendergrast@gmail.com</a>
+                </p>
+
+                <p>
+                  <iron-icon icon="device:developer-mode"></iron-icon>
+                  <a style="text-decoration: none" href="http://www.github.com/victorkp">GitHub</a>
+                </p>
+
+                <p>
+                  <iron-icon icon="places:business-center"></iron-icon>
+                  <a style="text-decoration: none" href="https://www.linkedin.com/pub/victor-kaiser-pendergrast/4a/a04/a62">Linkedin</a>
+                </p>
+              </paper-material>
+
+              <paper-material elevation="1">
+                   <img src="images/augmate.png" alt="Augmate" width="360px" />
+                   <p>Victor is currently in the Master's Degree of Computer Science program at Stanford University, as well as a software engineer at Augmate, where he works on wearable device managment software for enterprise applications. </p>
+
+                   <p>He started developing Android applications with Android's inception, even though he was not even a high school student. For the past two years, Victor has been working on Android systems and applications for embedded devices and wearables.</p>
+                 </paper-material>
+
+                 <paper-material elevation="1">
+                   <p>As for intellectual property, in addition to the software he published on the market and the code he released as open source, Victor is the author of a Elementary Android App Development, a book aimed at thoroughly covering the basics of Android applications.</p>
+                    
+                   <p>In high school, he developed a novel means of feature detection in images, designed to leverage the abilities of low power, multicore systems. In November 2015, he was granted <a href="https://patents.google.com/patent/US9195901B2">US Patent 9195901B2</a>.</p>
+                 </paper-material>
+            </section>
+
+            <section data-route="projects">
+                <paper-material elevation="1">
+                <img src="images/drivesafe.jpg" alt="DriveSafe LLC" width="200px" height="200px" />
+                <h2>DriveSafe LLC</h2>
+                <p>The brainchild of Jake Steinerman, and a project that I joined in order to occupy my time. DriveSafe was one of the first apps to make use of the Google Glass GDK. When we saw articles about DriveSafe in PCWorld, Wired, and even the print-version of USA Today, we knew we were onto something important.</p>
+
+                <p>Thanks to DriveSafe, Jake and I were invited to give courses at the Wearables Devcon and the Mobile+Web Devcon in 2014. DriveSafe is an ongoing project, with some large updates on the way. In late September, DriveSafe strategically partnered with Tranztec Solutions and was exhibited at an automotive technology tradeshow. </p>
+                <p> For more information, see the <a target='_blank' href="http://www.drivesafeforglass.com">DriveSafe website</a></p>
+                 </paper-material>
+
+                 <paper-material elevation="1">
+                     <img src="images/exlon.jpg" alt="Exlon Algorithm Patent Pending" width="200px" height="200px" />
+                     <h2>Exlon Algorithm (Patented)</h2>
+                     <p>An algorithm I designed while a high school Junior. The Exlon algorithm is a rethinking of feature detection in images. It is focused on taking full advantage of multi-core configurations by being highly parallelized. For this reason, on embedded systems with slow-speed multi-core processors, the Exlon algorithm tends to be significantly faster than traditional methods.</p>
+                     <p><a href="https://patents.google.com/patent/US9195901B2">US Patent 9195901B2</a></p>
+                 </paper-material>
+
+                 <paper-material elevation="1">
+                    <h2>Elementary Android App Development</h2>
+                    <img src="images/elementary-android.jpg" alt="Elementary Android App Development, by Victor Kaiser-Pendergrast" width="200px"/>
+                    <p>Written during an independent study in my last year of high school, Elementary Android App Development covers all the basics of Android application development and design - assuming only that it's readers have a working knowledge of Java. The book includes plenty of sample code, and explains everything from "Hello, World" to interface design, to multithreading. </p>
+                    <p>Available on <a target='_blank' href="http://www.amazon.com/dp/1481931350">Amazon</a></p>
+
+                 </paper-material>
+
+                 <paper-material elevation="1">
+                    <img src="images/elastic-pathing.jpg" alt="Elastic Pathing Research Project" width="200px" height="200px"/>
+                    <h2>Elastic Pathing Research</h2>
+                    <p>A research project I worked on under the direction of Proffessor Janne Lindqvist. The goal of this project was to construct an algorithm that shows thatsimply knowing one's instantaneious speed along a driving trip (not GPS data) is enough to predict where one is driving. Our Elastic Pathing paper was a Best Paper Nominee at Ubicomp 2014, and we are working on a journal submission now.</p>
+                    <p>To see more, visit the <a target='_blank' href="http://www.elasticpathing.org">Elastic Pathing Webpage</a></p>
+
+                 </paper-material>
+
+                 <paper-material elevation="1">
+                     <img src="images/glass-auth.jpg" alt="GlassAuth Library by Victor Kaiser-Pendergrast" width="200px" />
+                     <h2>GlassAuth and GlassSettings</h2>
+                     <p>The GlassAuth library was the first OAuth sign in implementation for Google Glass - released months before Google's own implementation. GlassAuth has been shown and mentioned at wearable technolgoy conferences by myself and other presenters</p>
+
+                     <p>GlassSettings is a library that is able to quickly and easily build preference screens that hook into Android's SharedPreferences for Google Glass. It comes with several built in preference types: including checkboxes, selecting from a list, measuring head tilt, and voice input. Additional types of preferences can be easily created by implementing a simple abstract class.</p>
+                     <p>The GlassAuth library is on GitHub <a target='_blank' href="https://github.com/victorkp/GlassAuth">here</a></p>
+                     <p>A sample application using GlassAuth (including a server) is <a target='_blank' href="https://github.com/victorkp/GlassWebNotes">here</a></p>
 
 
-  <core-scroll-header-panel id="contentheader" condenses main>
+                 </paper-material>
 
-    <core-toolbar class="tall">
-	    <paper-icon-button id="navicon" icon="menu"  class="navbutton"
-	        onclick="document.querySelector('core-drawer-panel').togglePanel();">
-            </paper-icon-button>
-      <div flex></div>
+                 <paper-material elevation="1">
+                <img src="images/badgin.jpg" alt="BadgIn Attendance Tracker" height="200px" />
+                <h2>BadgIn Attendance Tracker</h2>
+                <p>A time clock for the modern era! BadgIn was a project intended for my own use that tried to solve the problem of taking attendance at recurring club meetings. Members were issued NFC (tap-and-go) cards; in order to sign in and out, all they had to do was tap their card on the back of a Nexus 7 set up at the door.  </p>
+                <p>Additionally, BadgIn can display detailed attendance statistics, export attendance data as a spreadsheet, and even automatically backup to Dropbox.  </p>
+                <p>Available on <a target='_blank' href="http://play.google.com/store/apps/details?id=com.victor.punch.card">Google Play</a></p>
+                 </paper-material>
 
-      <div id="page-title" class="bottom indent title">About Me</div>
-      <div flex class="bottom"></div>
-      <paper-fab class="bottom" icon="communication:email" 
-	onclick="javascript:window.location='mailto:v.kaiser.pendergrast@gmail.com'" >
-     </paper-fab>
+                 <h3>Projects originally for Personal Use</h3>
 
-    </core-toolbar>
+                 <paper-material elevation="1">
+                     <h2>Kaiser Gmail Client</h2>
+                     <img src="images/kaiser.svg" alt="Kaiser Gmail Client" height="200px"/>
+                     <p>I was looking for a quick way to send emails (preferably from the command line). Disappointed I didn't find anything along the lines of what I wanted, so I began working on Kaiser. Kaiser is a command-line Gmail client written completely in Perl. Although it is not the most feature-packed email system, it has basic functionality such as sending mail, writing drafts, reading messages, and the ability to switch among multiple accounts. Kaiser was designed to run on RedHat systems, although changing the dependencies can allow it to run on Debian as well.</p>
+                     <p>Kaiser can be found on <a target='_blank' href="https://www.github.com/victorkp/kaiser-gmail-client">GitHub</a></p>
+                 </paper-material>
 
-    <div id="content-container" class="content">
-	    <bio-card></bio-card>
-    </div>
+                 <paper-material elevation="1">
+                     <h2>Gnome Hot Edges</h2>
+                     <img src="images/gnome.png" alt="GNOME" height="200px" width="200px"/>
+                     <p>An extension for Gnome Shell to add some additional functionality intended for touchscreens. With Gnome Hot Edges installed, simply swipe from the top of your touchscreen to show all windows, or swipe from the bottom of the screen to show your notification tray. Scroll alongside the right edge to switch workspaces up or down.</p>
+                     <p>Available to install from <a target='_blank' href="https://extensions.gnome.org/extension/798/overview-edge-gesture/">Gnome Extensions</a></p>
+                     <p>Code is on <a target='_blank' href="https://www.github.com/victorkp/GnomeHotEdges">GitHub</a></p>
+                  </paper-material>
 
-  </core-scroll-header-panel>
+            </section>
 
-</core-drawer-panel>
-
-  <script>
-
-    function showPage(pageNum) {
-	switch(pageNum) {
-	  case 0: // Bio
-	  	pageTitle.innerHTML = "About Me";
-	  	contentContainer.innerHTML = "<bio-card></bio-card>";
-		window.location.hash = "about";
-	  	break;
-	  case 1: // Projects
-	  	pageTitle.innerHTML = "Projects";
-	  	contentContainer.innerHTML = "<projects-cards></projects-cards>";
-		window.location.hash = "projects";
-	  	break;
-	  case 2: // Public Speaking
-	  	pageTitle.innerHTML = "Public Speaking";
-	  	contentContainer.innerHTML = "<speaking-cards></speaking-cards>";
-		window.location.hash = "speaking";
-	  	break;
-
-	}
-    }
-
-    // custom transformation: scale header's title
-    var titleStyle = document.querySelector('.title').style;
-    addEventListener('core-header-transform', function(e) {
-      var d = e.detail;
-      var m = d.height - d.condensedHeight;
-      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
-      titleStyle.transform = titleStyle.webkitTransform =
-          'scale(' + scale + ') translateZ(0)';
-    });
-
-    var first = 1;
-
-    var pageTitle = document.querySelector("#page-title");
-    var contentContainer = document.querySelector("#content-container");
-    var navMenu = document.querySelector("core-menu");
-    navMenu.addEventListener("core-select", function() {
-	showPage(navMenu.selected);
-    });
-
-    // Page state from original load
-    if(window.location.hash) {
-	    if(window.location.hash === "#about") {
-		showPage(0);
-		navMenu.selected = 0;
-	    } else if (window.location.hash === "#projects") {
-		showPage(1);
-		 navMenu.selected = 1;
-	    } else if (window.location.hash === "#speaking") {
-		showPage(2);
-		navMenu.selected = 2;
-	    } else {
-		window.location.hash = "about";
-		navMenu.selected = 0;
-	    }
-    } else {
-	window.location.hash = "about";
-	navMenu.selected = 0;
-    }
+            <section data-route="speaking">
+              <paper-material elevation="1">
+                <img src="images/wearables-techcon.jpg" alt="Wearables TechCon 2015" width="200px" />
+                 <h2>Wearables TechCon 2015</h2>
+                 <p>After the success of my talks at the Wearables DevCon in 2014, I was invited back to speak again at the slightly rebranded Wearables TechCon in March 2015 in Santa Clara.</p>
+                 <p>I gave two talks, the first was regarding building a POV video streaming service for smart glasses and other heads-up displays; this talk highlighted some of the specific issues (battery life, heat) that make a video streaming application difficult on a wearable, as well as some general tips for how to get a prototype up and running quickly. The second talk demonstrated and explained unifying a UI across Google Glass and Android Wear. The session gave example use cases for why one would want to present UI elements on different screens simultaneously, as well as example source code for such an application. </p>
+             </paper-material>
 
 
-  </script>
+            <paper-material elevation="1">
+              <img src="images/mobile-web.jpg" alt="Mobile+Web Devcon" width="200px" />
+              <h2>Mobile+Web Devcon 2014</h2>
+              <p>After the Wearables Devcon 2014, Jake Steinerman and I were recommended by one of the keynote speakers to give a talk at the Mobile+Web Devcon in Chicago. Being that this conference was much less Google Glass focused, our presentation was primarily about the challenges when designing applications for Glass and some of the issues with the platform.</p>
+             </paper-material>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  
-    ga('create', 'UA-29237733-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-  
-  </script>
+             <paper-material elevation="1">
+               <img src="images/wearables-devcon.jpg" alt="Wearables DevCon 2014" width="200px" />
+               <h2>Wearables Devcon 2014</h2>
+               <p>Thanks to the good publicity of DriveSafe, Jake Steinerman and I were invited to give a couple of talks related to Google Glass application design and development at the Wearables Devcon in San Francisco. </p>
+               <p>Our first talk involved sensor usage on Glass - more specifically some of the quirks of the system. In addition to general sensor usage, we examined a means of getting data from the IR eye sensor, which is not officially present in the APIs. Our second talk was regarding my GlassAuth library's implementation of OAuth on Google Glass. Both talks were very well received by their respective audiences.</p>
+             </paper-material>
+            </section>
 
+          </iron-pages>
+        </div>
+      </paper-scroll-header-panel>
+    </paper-drawer-panel>
+
+    <paper-toast id="toast">
+      <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+    </paper-toast>
+
+  </template>
+
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
 </body>
-</html>
 
+</html>

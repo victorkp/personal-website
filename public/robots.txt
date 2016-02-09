@@ -1,7 +1,4 @@
-User-agent: *
-Disallow: /
-Allow: /main
-Allow: /bio-card.html
-Allow: /projects-cards.html
-Allow: /speaking-cards.html
+# www.robotstxt.org
 
+User-agent: *
+Disallow:
